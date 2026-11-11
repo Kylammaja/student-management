@@ -1,0 +1,65 @@
+
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+@theme {
+    --color-shell: #A9A9A9;
+    --color-page: #D1D1D1;
+    --color-panel: #E0E0E0;
+    --color-ink: #111111;
+    --color-brand: #119363;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ========================================
+   STUDENTHUB - MICRO INTERACTIONS
+======================================== */
+
+/* Hover pada kartu dashboard */
+.panel-hover {
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.panel-hover:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+}
+
+/* Scroll reveal */
+html.motion-ready .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+html.motion-ready .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Menghormati preferensi pengurangan animasi */
+@media (prefers-reduced-motion: reduce) {
+    .panel-hover,
+    html.motion-ready .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
